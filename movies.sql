@@ -172,3 +172,72 @@ VALUES
 ('2023-12-04', 100, 6, 4);
 
 
+
+
+------------------ex1:Insérer un film -------------------
+
+INSERT INTO movie
+VALUES
+(9,"Data Science Adventures 2","Documentary",2029,130,9);
+
+------------------ex2:Rechercher des films-------------------
+SELECT * 
+FROM movie
+WHERE genre="Comedy" AND release_Year>2020;
+
+------------------ex3:Mise à jour des abonnements-------------------
+
+UPDATE user_info
+SET subscription_ID=2
+WHERE subscription_ID=1
+
+
+------------------ex4:Afficher les abonnements-------------------
+SELECT *
+FROM user_info
+INNER JOIN subscription
+ON user_info.subscription_ID=subscription.subscription_ID
+
+------------------ex5:Filtrer les visionnages-------------------
+
+--join first ,after filter
+SELECT *
+FROM watchhistory
+INNER JOIN user_info
+ON watchhistory.user_ID=user_info.user_ID
+WHERE completion_Percentage=100;
+
+
+------------------ex6:Trier et limiter-------------------
+
+SELECT *
+FROM movie
+ORDER BY duration DESC
+LIMIT 5;
+
+------------------ex7:Agrégation -------------------
+SELECT movie.title ,movie.movie_ID, AVG(watchhistory.completion_Percentage) 
+FROM watchhistory
+INNER JOIN movie
+ON movie.movie_ID=watchhistory.movie_ID
+GROUP BY movie.movie_ID,movie.title;
+
+
+------------------ex8:Group By -------------------
+
+SELECT   subscription.subscription_Type, 
+    COUNT(user_info.user_ID) 
+FROM subscription
+INNER JOIN user_info
+ON subscription.subscription_ID=user_info.subscription_ID
+GROUP BY subscription_Type;
+
+
+------------------ex9:Sous-requête (Bonus) -------------------
+
+
+
+
+
+
+
