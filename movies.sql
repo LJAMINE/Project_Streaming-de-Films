@@ -36,7 +36,7 @@ email VARCHAR(100) NOT NULL UNIQUE,
 --creation of table review------------------------------------
 create table review
 (
- review_ID INT ,
+ review_ID INT PRIMARY key AUTO_INCREMENT ,
     review_Text VARCHAR(200) NULL,
     review_Date DATE
 );
@@ -46,8 +46,6 @@ create table review
 
 
 --creation of watch history-------------------------------------
-
-
 create table watchHistory 
 
 (
@@ -122,3 +120,55 @@ ALTER TABLE watchhistory
  REFERENCES user_info(user_id);
 
 --add relation user_id to watchhistory---------------------------------------
+
+
+
+
+-----------insert subscription table
+INSERT INTO subscription (subscription_Type, monthlyFee)
+VALUES 
+('Basic', 9.99),
+('Premium', 15.99);
+
+
+------------------------insert movie table
+INSERT INTO movie (title, genre, release_Year, duration, rating)
+VALUES 
+('Comedy Chaos', 'Comedy', 2021, 120, 4.5),
+('Drama Dreams', 'Drama', 2019, 135, 4.0),
+('Sci-Fi Spectacular', 'Sci-Fi', 2023, 150, 4.7),
+('Data Science Adventures', 'Documentary', 2022, 90, 4.8),
+('Romantic Retreat', 'Romance', 2020, 110, 3.9),
+('Historical Heist', 'History', 2018, 140, 4.2),
+('Laugh Riot', 'Comedy', 2022, 100, 3.8),
+('Epic Adventure', 'Action', 2021, 160, 4.6);
+
+--------------------------insert users_info
+INSERT INTO user_info (first_name, last_name, email, registration_date, subscription_ID)
+VALUES 
+('John', 'Doe', 'john.doe@example.com', '2023-01-10', 1),
+('Jane', 'Smith', 'jane.smith@example.com', '2023-05-15', 2),
+('Alice', 'Brown', 'alice.brown@example.com', '2023-03-20', 1),
+('Bob', 'White', 'bob.white@example.com', '2023-07-25', 2);
+
+--------------------------insert review
+
+INSERT INTO review (review_Text, review_Date, user_ID, movie_ID)
+VALUES 
+('Amazing documentary!', '2023-02-01', 1, 4),
+('Not bad, but could be better.', '2023-06-10', 2, 7),
+('Loved the storyline!', '2023-07-20', 3, 6),
+('An absolute masterpiece.', '2023-08-05', 4, 3);
+
+
+---------------------------insert watch history
+INSERT INTO watchHistory (watch_date, completion_Percentage, movie_ID, user_ID)
+VALUES 
+('2023-12-01', 100, 1, 1),
+('2023-12-01', 50, 2, 1),
+('2023-12-02', 100, 3, 2),
+('2023-12-03', 100, 4, 3),
+('2023-12-03', 80, 7, 4),
+('2023-12-04', 100, 6, 4);
+
+
