@@ -238,6 +238,23 @@ GROUP BY subscription_Type;
 
 
 
+------------------ex10:Self-Join (Bonus  ) -------------------
+
+SELECT  M1.genre , COUNT(M1.genre) , M1.release_Year
+FROM `movie` as M1
+JOIN `movie` as M2 
+ON M1.movie_ID = M2.movie_ID
+WHERE M1.release_Year = M2.release_Year
+GROUP BY M1.genre , M1.release_Year;
+
+
+
+
+
+
+
+
+
 
 
 
