@@ -236,7 +236,16 @@ GROUP BY subscription_Type;
 ------------------ex9:Sous-requête (Bonus) -------------------
 
 
-
+SELECT title
+FROM 
+(
+SELECT m.title,AVG(r.rating) AS myRating
+FROM movie m
+INNER JOIN review r   ON r.movieID=m.movieID
+    WHERE r.rating>4   
+    GROUP BY m.title
+) AS t2
+WHERE myRating>4;
 
 ------------------ex10:Self-Join (Bonus  ) -------------------
 
